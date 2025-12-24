@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F&S Fashion Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        /* Header Section */
+        header {
+            background-color: #a0a0a0;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Sign In Button - Matching Shop Now design */
+        .sign-in-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .sign-in-btn:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+        
+        /* Navigation Menu */
+        nav {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li:not(:last-child) {
+            margin-right: 10px;
+        }
+        
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .nav-menu a::after {
+            content: '|';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000;
+        }
+        
+        .nav-menu li:last-child a::after {
+            content: '';
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #e0e0e0;
+            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .shop-now-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .shop-now-btn:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+        
+        .product-item {
+            width: 200px;
+            height: 200px;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .product-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu li {
+                margin: 5px;
+            }
+            
+            .product-grid {
+                justify-content: center;
+            }
+            
+            .product-item {
+                width: 150px;
+                height: 150px;
+            }
+            
+            /* Adjust sign in button for smaller screens */
+            .sign-in-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-text {
+                font-size: 16px;
+            }
+            
+            .shop-now-btn {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+            
+            /* Adjust sign in button for smallest screens */
+            .sign-in-btn {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">F&S</div>
+        <div class="header-right">
+            <div class="social-icons"> 
+                <img src="fb.jpg" alt="Facebook">
+                <img src="ig.jpg" alt="Instagram">
+                <img src="twt.png" alt="Twitter">
+                <img src="tt.png" alt="TikTok">
+            </div>
+            <a href="log.html" class="sign-in-btn">SIGN IN</a>
+        </div>
+    </header>
+    
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="new arrivals.html" class="nav-link" data-target="home">HOME</a></li>
+               
+                <li><a href="contact.html" class="nav-link" data-target="content">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">New Arrivals</h1>
+            <p class="hero-text">Wyn Store welcomes a fresh drop! New looks for men, women, and kids have arrived. Shop the whole family's style today.</p>
+            <a href="new arrivals.html" class="shop-now-btn">SHOP NOW</a>
+        </div>
+        <div class="hero-image">
+            <img src="1.png" alt="Fashion Model">
+        </div>
+    </section>
+    
+    <!-- Product Grid -->
+    <div class="product-grid">
+        <div class="product-item">
+            <img src="2.png" alt="Product 1">
+        </div>
+        <div class="product-item">
+            <img src="3.png" alt="Product 2">
+        </div>
+        <div class="product-item">
+            <img src="4.png" alt="Product 3">
+        </div>
+    </div>
+
+    <script>
+        // Add JavaScript to handle navigation with anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Add click event listeners to each navigation link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Get the target from data attribute
+                    const target = this.getAttribute('data-target');
+                    
+                    // For Home, Men, Women, Kids links, we want to navigate to new arrivals with specific section
+                    if (['home', 'men', 'women', 'kids'].includes(target)) {
+                        // The href already points to the correct page with anchor
+                        // We don't need to prevent default as we want the navigation to happen
+                        // But we can add some visual feedback
+                        this.style.backgroundColor = '#000';
+                        this.style.color = '#fff';
+                        
+                        // Reset other links after a short delay
+                        setTimeout(() => {
+                            navLinks.forEach(lnk => {
+                                if (lnk !== this) {
+                                    lnk.style.backgroundColor = '';
+                                    lnk.style.color = '#000';
+                                }
+                            });
+                        }, 300);
+                    }
+                    // For Blog and Content links, we can keep them as is (no navigation change)
+                    else if (['blog', 'content'].includes(target)) {
+                        // Just update active state
+                        navLinks.forEach(lnk => {
+                            lnk.style.backgroundColor = '';
+                            lnk.style.color = '#000';
+                        });
+                        this.style.backgroundColor = '#000';
+                        this.style.color = '#fff';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+<a href="log.html" class="sign-in-btn">SIGN IN</a>
+

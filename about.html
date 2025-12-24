@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - F&S Fashion Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        /* Header Section */
+        header {
+            background-color: #a0a0a0;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Sign In Button */
+        .sign-in-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .sign-in-btn:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+        
+        /* Navigation Menu */
+        nav {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li:not(:last-child) {
+            margin-right: 10px;
+        }
+        
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .nav-menu a::after {
+            content: '|';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000;
+        }
+        
+        .nav-menu li:last-child a::after {
+            content: '';
+        }
+        
+        /* About Section */
+        .about-section {
+            background-color: #e0e0e0;
+            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .about-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .value-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .value-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        
+        .value-card p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            padding: 60px 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 40px;
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #a0a0a0;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: calc(50% + 25px);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: calc(50% + 25px);
+            margin-right: 0;
+            text-align: right;
+        }
+        
+        .timeline-content {
+            background-color: #e0e0e0;
+            padding: 25px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .timeline-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: calc(50% - 30px);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-year {
+            left: calc(50% - 30px);
+        }
+        
+        /* Team Section */
+        .team-section {
+            background-color: #e0e0e0;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .team-member {
+            width: 220px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .member-image {
+            height: 220px;
+            background-color: #000;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            font-size: 16px;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .about-title {
+                font-size: 36px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu li {
+                margin: 5px;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item .timeline-content {
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+                text-align: left !important;
+            }
+            
+            .timeline-year {
+                left: 0 !important;
+                right: auto !important;
+            }
+            
+            .team-grid {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-title {
+                font-size: 28px;
+            }
+            
+            .about-text {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .timeline-content {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">F&S</div>
+        <div class="header-right">
+            <div class="social-icons"> 
+                <img src="fb.jpg" alt="Facebook">
+                <img src="ig.jpg" alt="Instagram">
+                <img src="twt.png" alt="Twitter">
+                <img src="tt.png" alt="TikTok">
+            </div>
+            <a href="log.html" class="sign-in-btn">SIGN IN</a>
+        </div>
+    </header>
+    
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="landing page.html" class="nav-link" data-target="home">HOME</a></li>
+                <li><a href="contact.html" class="nav-link" data-target="blog">BLOG</a></li>
+                <li><a href="new arrivals.html" class="nav-link" data-target="content">CONTENT</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h1 class="about-title">About F&S</h1>
+            <p class="about-text">Founded in 2018, F&S Fashion Store has been dedicated to bringing stylish, high-quality clothing to families across the nation. What started as a small boutique has grown into a beloved destination for fashion-forward individuals of all ages.</p>
+            <p class="about-text">Our mission is simple: to provide exceptional style, quality, and value for the whole family. We believe fashion should be accessible, comfortable, and expressive — without compromise.</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Quality First</h3>
+                    <p>We source premium fabrics and work with skilled artisans to ensure every garment meets our high standards.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Family Focus</h3>
+                    <p>From infants to adults, our collections are designed to bring style and comfort to every member of your family.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Sustainable Style</h3>
+                    <p>We're committed to ethical production and reducing our environmental footprint with eco-friendly practices.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Customer Love</h3>
+                    <p>Your satisfaction is our priority. We strive to create meaningful connections through exceptional service.</p>
+                </div>
+            </div>
+        </div>
+        <div class="about-image">
+            <img src="https://placehold.co/600x500/e0e0e0/000000?text=F%26S+Storefront" alt="F&S Storefront">
+        </div>
+    </section>
+    
+   
+
+    <script>
+        // Add JavaScript to handle navigation with anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Add click event listeners to each navigation link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Get the target from data attribute
+                    const target = this.getAttribute('data-target');
+                    
+                    // For Home, Men, Women, Kids links, we want to navigate to new arrivals with specific section
+                    if (['home', 'men', 'women', 'kids'].includes(target)) {
+                        // The href already points to the correct page with anchor
+                        // We don't need to prevent default as we want the navigation to happen
+                        // But we can add some visual feedback
+                        this.style.backgroundColor = '#000';
+                        this.style.color = '#fff';
+                        
+                        // Reset other links after a short delay
+                        setTimeout(() => {
+                            navLinks.forEach(lnk => {
+                                if (lnk !== this) {
+                                    lnk.style.backgroundColor = '';
+                                    lnk.style.color = '#000';
+                                }
+                            });
+                        }, 300);
+                    }
+                    // For Blog and Content links, we can keep them as is (no navigation change)
+                    else if (['blog', 'content'].includes(target)) {
+                        // Just update active state
+                        navLinks.forEach(lnk => {
+                            lnk.style.backgroundColor = '';
+                            lnk.style.color = '#000';
+                        });
+                        this.style.backgroundColor = '#000';
+                        this.style.color = '#fff';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

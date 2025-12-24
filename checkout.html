@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F&S Clothing - Checkout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #ddd;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #bbb;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons i {
+            font-size: 18px;
+        }
+        
+        .close-btn {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+        
+        .product-section {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-header-item {
+            font-weight: 600;
+            text-align: right;
+        }
+        
+        .product-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .product-discount {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .quantity-value {
+            width: 40px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .total-price {
+            font-weight: 600;
+            color: #000;
+        }
+        
+        .checkout-section {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        
+        .checkout-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .billing-details {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .billing-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-col {
+            flex: 1;
+        }
+        
+        .order-summary {
+            flex: 1;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .summary-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .summary-label {
+            font-weight: 600;
+        }
+        
+        .summary-value {
+            font-weight: 600;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .payment-method {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .payment-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .payment-option input {
+            margin: 0;
+        }
+        
+        .payment-option label {
+            font-size: 12px;
+        }
+        
+        .place-order-btn {
+            width: 100%;
+            background: #000;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .place-order-btn:hover {
+            background: #333;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .social-icons {
+                margin: 0 auto;
+            }
+            
+            .container {
+                margin: 20px 10px;
+            }
+            
+            .product-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .product-image {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .billing-details {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .order-summary {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">F&S</div>
+        <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-tiktok"></i>
+        </div>
+        <div class="close-btn">✕</div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Product Section -->
+        <div class="product-section">
+            <div class="product-header">
+                <div>PRODUCT</div>
+                <div class="product-header-item">PRICE</div>
+                <div class="product-header-item">QUANTITY</div>
+                <div class="product-header-item">TOTAL</div>
+            </div>
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="a.png" alt="Product Image" width="100" height="100">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">F&S Black T-shirt for men</div>
+                    <div class="product-price">LKR 2,990.00</div>
+                    <div class="product-discount">10% discount</div>
+                </div>
+                <div class="product-price">RS. 2,990.00</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn">-</button>
+                    <input type="text" class="quantity-value" value="1">
+                    <button class="quantity-btn">+</button>
+                </div>
+                <div class="total-price">RS. 2,990.00</div>
+            </div>
+        </div>
+
+        <!-- Checkout Section -->
+        <div class="checkout-section">
+            <div class="checkout-title">CHECKOUT</div>
+            
+            <div class="billing-details">
+                <!-- Billing Form -->
+                <div class="billing-form">
+                    <div class="form-group">
+                        <div class="form-label">BILLING DETAILS</div>
+                        <div class="form-group">
+                            <div class="form-label">FULL NAME</div>
+                            <input type="text" class="form-input" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label">EMAIL</div>
+                            <input type="email" class="form-input" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label">ADDRESS</div>
+                            <input type="text" class="form-input" placeholder="Enter your address">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label">CITY</div>
+                            <input type="text" class="form-input" placeholder="Enter your city">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-label">COUNTRY</div>
+                                <input type="text" class="form-input" placeholder="Enter your country">
+                            </div>
+                            <div class="form-col">
+                                <div class="form-label">POSTCODE</div>
+                                <input type="text" class="form-input" placeholder="Enter your postcode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <div class="summary-title">BILLING DETAILS</div>
+                    <div class="summary-row">
+                        <div class="summary-label">SUBTOTAL</div>
+                        <div class="summary-value">LKR 2,990.00</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">DELIVERY</div>
+                        <div class="summary-value">LKR 300.00</div>
+                    </div>
+                    <div class="total-row">
+                        <div class="summary-label">TOTAL</div>
+                        <div class="summary-value">LKR 3,290.00</div>
+                    </div>
+                    
+                    <div class="payment-method">
+                        <div class="payment-title">PAYMENT METHOD</div>
+                        <div class="payment-options">
+                            <div class="payment-option">
+                                <input type="radio" id="creditCard" name="paymentMethod" value="creditCard" checked>
+                                <label for="creditCard">credit/Debit card</label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="cashOnDelivery" name="paymentMethod" value="cashOnDelivery">
+                                <label for="cashOnDelivery">cash on delivery</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Place Order Button -->
+            <button class="place-order-btn">PLACE ORDER</button>
+        </div>
+    </div>
+</body>
+</html>
+

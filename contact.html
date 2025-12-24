@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - F&S Fashion Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        /* Header Section */
+        header {
+            background-color: #a0a0a0;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Sign In Button */
+        .sign-in-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .sign-in-btn:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+        
+        /* Navigation Menu */
+        nav {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li:not(:last-child) {
+            margin-right: 10px;
+        }
+        
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .nav-menu a::after {
+            content: '|';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000;
+        }
+        
+        .nav-menu li:last-child a::after {
+            content: '';
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #e0e0e0;
+            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .contact-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .contact-info {
+            background-color: #f5f5f5;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+        }
+        
+        .contact-details {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.8;
+        }
+        
+        .contact-details strong {
+            color: #000;
+        }
+        
+        .contact-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #000;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+        
+        .contact-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .contact-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .map-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        
+        .map-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-title {
+                font-size: 36px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu li {
+                margin: 5px;
+            }
+            
+            .contact-info,
+            .contact-form {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-title {
+                font-size: 28px;
+            }
+            
+            .contact-text {
+                font-size: 16px;
+            }
+            
+            .submit-btn {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">F&S</div>
+        <div class="header-right">
+            <div class="social-icons"> 
+                <img src="fb.jpg" alt="Facebook">
+                <img src="ig.jpg" alt="Instagram">
+                <img src="twt.png" alt="Twitter">
+                <img src="tt.png" alt="TikTok">
+            </div>
+            <a href="log.html" class="sign-in-btn">SIGN IN</a>
+        </div>
+    </header>
+    
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="landing page.html" class="nav-link" data-target="home">HOME</a></li>
+              
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-content">
+            <h1 class="contact-title">Contact Us</h1>
+            <p class="contact-text">Have questions about our products or need assistance with your order? Our customer service team is here to help you.</p>
+            
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-details">
+                    <p><strong>Address:</strong> 123 Fashion Street, Style City, SC 10001</p>
+                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                    <p><strong>Email:</strong> info@fsfashion.com</p>
+                    <p><strong>Hours:</strong> Mon-Fri: 9AM-6PM, Sat: 10AM-5PM, Sun: Closed</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="">Select a subject</option>
+                            <option value="order">Order Inquiry</option>
+                            <option value="return">Return/Exchange</option>
+                            <option value="product">Product Question</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+        <div class="contact-image">
+            <img src="https://placehold.co/600x500/e0e0e0/000000?text=Contact+Us" alt="Contact Us">
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <h2 class="map-title">Our Location</h2>
+        <div class="map-container">
+            [Interactive Map Would Appear Here]
+        </div>
+    </section>
+
+    <script>
+        // Add JavaScript to handle navigation with anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Add click event listeners to each navigation link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Get the target from data attribute
+                    const target = this.getAttribute('data-target');
+                    
+                    // For Home, Men, Women, Kids links, we want to navigate to new arrivals with specific section
+                    if (['home', 'men', 'women', 'kids'].includes(target)) {
+                        // The href already points to the correct page with anchor
+                        // We don't need to prevent default as we want the navigation to happen
+                        // But we can add some visual feedback
+                        this.style.backgroundColor = '#000';
+                        this.style.color = '#fff';
+                        
+                        // Reset other links after a short delay
+                        setTimeout(() => {
+                            navLinks.forEach(lnk => {
+                                if (lnk !== this) {
+                                    lnk.style.backgroundColor = '';
+                                    lnk.style.color = '#000';
+                                }
+                            });
+                        }, 300);
+                    }
+                    // For Blog and Content links, we can keep them as is (no navigation change)
+                    else if (['blog', 'content'].includes(target)) {
+                        // Just update active state
+                        navLinks.forEach(lnk => {
+                            lnk.style.backgroundColor = '';
+                            lnk.style.color = '#000';
+                        });
+                        this.style.backgroundColor = '#000';
+                        this.style.color = '#fff';
+                    }
+                });
+            });
+            
+            // Form submission handling
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you shortly.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
